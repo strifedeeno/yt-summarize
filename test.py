@@ -23,6 +23,9 @@ result = model.transcribe("audio.mp3")
 
 summarizer = pipeline("summarization", model="facebook/bart-base")
 
-print(summarizer(result['text'], max_length=1000, min_length=50, do_sample=False))
+summary= "the following is a summary of a youtube video: " + result["text"]
+print(summary)
+
+print(summarizer(summary,do_sample=False))
 
 os.remove("audio.mp3")
