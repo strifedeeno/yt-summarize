@@ -2,6 +2,7 @@ from transformers import pipeline
 import yt_dlp
 import whisper
 import os
+from transformers import pipeline, set_seed
 
 URLS = input("Enter youtube video url: ")
 
@@ -21,11 +22,7 @@ os.system("mv *mp3 audio.mp3")
 model = whisper.load_model("base")
 result = model.transcribe("audio.mp3")
 
-summarizer = pipeline("summarization", model="facebook/bart-base")
-
-summary= "the following is a summary of a youtube video: " + result["text"]
-print(summary)
-
-print(summarizer(summary,do_sample=False))
+summarizer = pipeline("summarization", model="google/pegasus-cnn_dailymail")
+print(summarizer(result["text"]))
 
 os.remove("audio.mp3")
