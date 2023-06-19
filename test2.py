@@ -1,5 +1,6 @@
 import whisper
-from transformers import pipeline, set_seed
+from transformers import pipeline, set_seed\
+PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python
 """model = whisper.load_model("base")
 result = model.transcribe("audio.mp3")
 print(result)

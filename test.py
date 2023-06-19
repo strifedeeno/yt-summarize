@@ -17,7 +17,7 @@ ydl_opts = {
 with yt_dlp.YoutubeDL(ydl_opts) as ydl:
     error_code = ydl.download(URLS)
 
-os.system("mv *mp3 audio.mp3")
+os.system("ren *mp3 audio.mp3")
 
 model = whisper.load_model("base")
 result = model.transcribe("audio.mp3")
